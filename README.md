@@ -1,40 +1,32 @@
 # Student Scoreboard
 
-This application is designed to help educators and administrators manage student performance records through a clean and intuitive interface. It allows for real-time updates and simple data entry to streamline the process of tracking academic progress.
+An accessible, responsive student performance dashboard built with React and Vite, without runtime UI or chart dependencies.
 
-## Overview
+## Run
 
-The primary goal of this project was to create a functional and responsive student management tool using modern web standards. It focuses on a component-based architecture to ensure the code remains maintainable and scalable.
+Use Node.js 22.12+ (or a version supported by Vite 8).
 
-## Core Features
+```sh
+npm install
+npm run dev
+```
 
-The application provides several essential tools for managing student data:
+Open the local URL printed by Vite. For production, run `npm run build`; use `npm run preview` to preview the build. Run `npm run lint` to check source code.
 
-- A dynamic table that displays student names alongside their current scores.
-- Inline editing capabilities that allow users to update student marks directly within the table.
-- A dedicated submission form for adding new students to the system with ease.
-- Automated status tracking that labels students as having passed or failed based on their score.
-- Integrated styling that uses visual cues like color changes to highlight passing and failing marks.
+## Features
 
-## Technical Details
+Five hash-linked pages: Dashboard, Students, Analytics, Leaderboard, and About & Settings. Supports adding, editing, deletion with five-second undo, search, status filters, sorting, charts, keyboard and touch carousel controls, CSV import/export, reduced motion, and configurable pass marks.
 
-The project is built using a modern technology stack that prioritizes performance and clarity:
+Eight sample students load on first use. Existing `scoreboard_students` records are preserved. An empty classroom stays empty until students are added or samples are reset. Records and preferences are saved in this browser's local storage; export a CSV for a portable backup. If browser storage is blocked or full, changes remain available for the current session but may not survive a refresh.
 
-- React: Used for building a reactive and efficient user interface.
-- Vite: Employed as the build tool to provide a fast development environment.
-- Pure CSS: All styling is handled via standard CSS to ensure full control over the design without the overhead of external frameworks.
-- Functional Components: The application utilizes modern React hooks and functional patterns.
+CSV requires `Name,Marks` and optionally `Class,Roll`. Quoted fields, escaped quotes and line breaks are supported. Import appends records after validating every row. Duplicate names are allowed; unique internal IDs distinguish students. Grades use fixed thresholds (A+: 90, A: 80, B: 70, C: 60, D: 40); the configurable pass mark changes pass/fail status independently.
 
-## Getting Started
+## Source
 
-To run this project locally, follows these steps:
+- `src/components/`: reusable forms, accessible dialogs, charts, carousel, counters, podium and icons
+- `src/pages/`: five dashboard pages
+- `src/hooks/`: persistence and hash navigation
+- `src/utils/`: grading, statistics, seed data and CSV handling
+- `src/styles/`: responsive palette, layouts and reduced-motion styles
 
-1. Clone or download the repository to your local machine.
-2. Open your terminal and navigate to the project directory.
-3. Install the necessary dependencies by running the command: npm install
-4. Start the development server with the command: npm run dev
-5. Open your web browser and go to the local address provided in the terminal output.
-
-## License
-
-This project is open-source and available for use and modification.
+All calculations are derived from current student records. This academic project demonstrates React hooks, state management, validation, accessible interaction and CSS/SVG data visualization.
